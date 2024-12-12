@@ -21,7 +21,7 @@
   <inherits name="com.badlogic.gdx.controllers.controllers-gwt" />
   <inherits name="com.github.czyzby.autumn.gwt.GdxAutumnGwt" />
   <inherits name="com.github.czyzby.kiwi.GdxKiwi" />
-  <inherits name="io.gyuka08.boeinggdx.Main" />
+  <inherits name="io.gyuka08.boeinggdx.Window" />
 
   <!-- You must change this if you rename packages later, or rename GwtLauncher. -->
   <entry-point class="io.gyuka08.boeinggdx.gwt.GwtLauncher" />
