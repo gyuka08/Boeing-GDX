@@ -1,17 +1,16 @@
 package io.gyuka08.boeinggdx.scene;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.gyuka08.boeinggdx.Window;
+import io.gyuka08.boeinggdx.sprite.Plane;
 
 public class GameScene extends Scene{
-
-    Texture planeTexture;
+    private final Plane boeing;
 
     protected GameScene(SceneManager sceneManager) {
         super(sceneManager);
-        planeTexture = new Texture("texture/spr_boeing767.png");
-        camera.setToOrtho(false, Window.WINDOW_WIDTH / 2, Window.WINDOW_HEIGHT / 2);
+        boeing = new Plane(30, Window.WINDOW_HEIGHT / 4);
+        camera.setToOrtho(false, (int)(Window.WINDOW_WIDTH / 2), (int)(Window.WINDOW_HEIGHT / 2) );
     }
 
     @Override
@@ -21,14 +20,15 @@ public class GameScene extends Scene{
 
     @Override
     public void update(float delta) {
-
+        handleInput();
+        boeing.update(delta);
     }
 
     @Override
     public void render(SpriteBatch batch) {
-        batch.begin();
         batch.setProjectionMatrix(camera.combined);
-        batch.draw(planeTexture, 0, 0, 105, 35);
+        batch.begin();
+        batch.draw(boeing.getPlaneTexture(), boeing.getPosition().x, boeing.getPosition().y);
         batch.end();
     }
 
